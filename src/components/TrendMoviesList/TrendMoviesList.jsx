@@ -11,16 +11,17 @@ export const TrendMoviesList = () => {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+console.log(movies);
 
     
     useEffect(() => {
         const fetchTrendMovies = async () => {
             try {
                 setLoading(true);
-                const { data } = await getTrendMovies();
+                const data  = await getTrendMovies();
                 setMovies(data?.length ? data : []);
                 console.log(data);
-                
+
             }
             catch (error) {
                 setError(error.message);
@@ -37,8 +38,8 @@ export const TrendMoviesList = () => {
 console.log(movies);
 
 
-const elements = movies.map(({ id, poster_path, original_title }) => (<li key={id} className={styles.item}>
-    <h3>{original_title}</h3> 
+const elements = movies.map(({ id,original_title }) => (<li key={id} className={styles.item}>
+    <Link to={`/movies/${id}`}>{original_title}</Link> 
 </li>));
 
 return (
