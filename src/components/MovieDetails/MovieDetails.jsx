@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
-import { Link, Outlet, useParams, useNavigate, useLocation } from "react-router-dom";
+import {Link, Outlet, useParams, useNavigate } from "react-router-dom";
 
 import { getMovieById } from "api/api";
+
 
  import styles from "./movie-details.module.css";
 
 
 export const MovieDetails = () => {
-    const [movie, setMovie] = useState();
+    const [movieData, setMovie] = useState();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     
@@ -32,14 +33,12 @@ export const MovieDetails = () => {
 
         fetchMovieById();
         
-        console.log(movie);
-        
-     // Тут потрібно id????   
-    }, []);
+    }, [id]);
 
-    console.log(movie);
+    console.log(movieData);
 
     const goBack = () => navigate(-1);
+    const defaultImg = '<https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700>'
 
     return (
         <>
@@ -48,13 +47,27 @@ export const MovieDetails = () => {
             
             <button onClick={goBack} type="button">Go back</button>
 			
-            {movie && (
+            {movieData && (
+                <div className={styles.wrapper}>
                 <div>
-                <img src={movie.poster_path}
-                alt={movie.title}
-                width="280"
-            />
-				<h1>{movie.title}</h1>
+                    <div>
+                <img src={ movieData.poster_path ?
+                    `https://image.tmdb.org/t/p/w500/${movieData.poster_path}` : defaultImg}             
+                    width={250}
+                    alt="poster"
+                />
+</div>
+<div>
+				<h1>{movieData.title}</h1>
+                <p>Popularity:{movieData.popularity}</p>
+                <h2>Overviews:{movieData.overview}</h2>
+                
+                </div>
+                </div>
+                <div>
+                    <Link to="cast">Cast</Link>
+                    <Outlet/>
+                </div>
                 </div>
 			)}
         

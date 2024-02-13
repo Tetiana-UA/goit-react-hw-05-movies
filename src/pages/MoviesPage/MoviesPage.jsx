@@ -1,11 +1,14 @@
-import { SearchForm } from "components/Searchform/Searchform";
+
+import { MoviesSearch } from "components/MoviesSearch/MoviesSearch";
 
 
 export const MoviesPage = ()=> {
     return (
         <div>
             <h1>Movie page</h1>
-            <SearchForm/>
+            
+            <MoviesSearch/>
+            
             
             
             

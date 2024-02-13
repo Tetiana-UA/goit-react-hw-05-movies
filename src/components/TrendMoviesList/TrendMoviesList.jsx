@@ -8,10 +8,9 @@ import styles from "./trend-movies-list.module.css"
 
 
 export const TrendMoviesList = () => {
-    const [movies, setMovies] = useState([]);
+    const [trendMovies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-console.log(movies);
 
     
     useEffect(() => {
@@ -35,10 +34,10 @@ console.log(movies);
     }, []);
 
     
-console.log(movies);
 
 
-const elements = movies.map(({ id,original_title }) => (<li key={id} className={styles.item}>
+
+const elements = trendMovies.map(({ id,original_title }) => (<li key={id} className={styles.item}>
     <Link to={`/movies/${id}`}>{original_title}</Link> 
 </li>));
 

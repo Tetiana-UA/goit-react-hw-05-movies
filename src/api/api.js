@@ -22,7 +22,7 @@ export const getMovieById = async id => {
       api_key: API_KEY,
     },
   });
-  console.log(response.data);
+  
   return response.data;
 
 
@@ -40,15 +40,11 @@ export const getMoviesByQuery = async query => {
     }
   );
   return response.data.results;
+  
 };
 
 
-
-
-
-
-
-export const fetchMovieCast = async id => {
+export const getMovieCastById = async id => {
   const response = await axios.get(
     `https://api.themoviedb.org/3/movie/${id}/credits`,
     {
@@ -57,10 +53,14 @@ export const fetchMovieCast = async id => {
       },
     }
   );
+  console.log(response.data.cast);
   return response.data.cast;
 };
 
-export const fetchReviews = async id => {
+
+
+
+export const getMovieReviewsById = async id => {
   const response = await axios.get(
     `https://api.themoviedb.org/3/movie/${id}/reviews`,
     { params: { api_key: API_KEY } }

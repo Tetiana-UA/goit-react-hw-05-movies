@@ -6,7 +6,6 @@ export const SharedLayout = () => {
     return (
         <>
             <MainMenu />
-            
             <Outlet />
             
         </>
