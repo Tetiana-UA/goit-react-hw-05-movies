@@ -29,7 +29,8 @@ export const Reviews = () => {
         }
     
         setReviews(reviewsData);
-        console.log(reviewsData);
+        
+        
         
         }
 
@@ -46,14 +47,15 @@ export const Reviews = () => {
 
 },[id])
 
-
 console.log(reviews);
 
 
 
-const elements = reviews.map(({id}) => (
+
+const elements = reviews.map(({id, author, content}) => (
     <li key={id}>
-        <p>1111111</p>
+        <h4>{author}</h4>
+        <p>{content}</p>
     </li>))
 
 //для подальшої перевірки записуємо в константу, що масив картинок(gallery) не порожній , тобто Boolean(gallery.length) буде true. А якщо буде порожній , тоьто false, і далі в return не будемо відмальовувати компоненти
