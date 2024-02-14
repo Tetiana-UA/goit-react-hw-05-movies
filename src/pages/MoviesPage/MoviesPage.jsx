@@ -1,16 +1,13 @@
-
+import styles from "./movies-page.module.css";
 import { MoviesSearch } from "components/MoviesSearch/MoviesSearch";
+
 
 
 export const MoviesPage = ()=> {
     return (
-        <div>
-            <h1>Movie page</h1>
-            
-            <MoviesSearch/>
-            
-            
-            
+        <div className={styles.wrapper}>
+                        
+            <MoviesSearch/>  
             
         </div>
     )

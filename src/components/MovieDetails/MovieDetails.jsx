@@ -41,36 +41,59 @@ export const MovieDetails = () => {
     const defaultImg = '<https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700>'
 
     return (
-        <>
+        <div >
             {loading && <p>...Loading</p>}
             {error && <p className={styles.error}>Error: {error}</p>}
             
-            <button onClick={goBack} type="button">Go back</button>
+            <button onClick={goBack} type="button" className={styles.button}>Go back</button>
 			
             {movieData && (
                 <div className={styles.wrapper}>
-                <div>
-                    <div>
+                <div className={styles.movieDetails}>
+                <div className={styles.picture}>
                 <img src={ movieData.poster_path ?
                     `https://image.tmdb.org/t/p/w500/${movieData.poster_path}` : defaultImg}             
                     width={250}
                     alt="poster"
                 />
-</div>
-<div>
-				<h1>{movieData.title}</h1>
-                <p>Popularity:{movieData.popularity}</p>
-                <h2>Overviews:{movieData.overview}</h2>
-                
+                </div>
+                <div className={styles.information} >
+                {movieData && (
+                    <h2 className={styles.title}>{movieData.title}</h2> 
+                )}
+                {movieData.vote_average > 0 && (
+                <p>User Score: {movieData.vote_average}%</p>
+                )}
+                {movieData.overview && (
+                <>
+                <h2>Overview</h2>
+                <p>{movieData.overview}</p>
+                </>
+                )}
+                {movieData.genres && (
+                <>
+                <h2>Genres</h2>
+                <ul>
+                    {movieData.genres.map(({id, name}) => (
+                    <li key={id}>{name}</li>
+                    ))}
+                </ul>
+                </>
+                )}
+ 
                 </div>
                 </div>
-                <div>
+                <div >
+                    <h3>Additional information</h3>
+                    <ul className={styles.additionalLink}>
                     <Link to="cast">Cast</Link>
+                    <Link to="reviews">Reviews</Link>
+                    </ul>
                     <Outlet/>
                 </div>
                 </div>
 			)}
         
-        </>
+        </div>
     )
 }

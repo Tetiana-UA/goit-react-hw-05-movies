@@ -39,10 +39,10 @@ export const SearchForm = ({ onSubmit }) => {
     return (
         <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.fieldGroup}>
-                <label htmlFor={searchId}>Enter search phrase</label>
-                <input id={searchId} ref={inputRef} value={state.search} onChange={handleChange} required type="text" name="search" placeholder="Enter search phrase" />
+                
+                <input id={searchId} ref={inputRef} value={state.search} onChange={handleChange} required type="text" name="search"  className={styles.input} />
             </div>
-            <button type="submit">Search</button>
+            <button type="submit" className={styles.button}>Search</button>
         </form>
     )
 }

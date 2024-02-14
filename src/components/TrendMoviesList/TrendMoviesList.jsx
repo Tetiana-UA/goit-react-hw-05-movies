@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { getTrendMovies } from "api/api";
 
 import styles from "./trend-movies-list.module.css"
+import { Loader } from "components/Loader/Loader";
 
 
 
@@ -44,7 +45,7 @@ const elements = trendMovies.map(({ id,original_title }) => (<li key={id} classN
 return (
 <>
 {error && <p className={styles.error}>{error}</p>}
-{loading && <p>...Loading</p>}
+{loading && <Loader/>}
 
 {elements}
 </>

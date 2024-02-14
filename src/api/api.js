@@ -11,8 +11,7 @@ export const getTrendMovies = async () => {
       },
     }
   );
-  
-   return response.data.results;
+  return response.data.results;
 };
 
 
@@ -53,11 +52,9 @@ export const getMovieCastById = async id => {
       },
     }
   );
-  console.log(response.data.cast);
+  
   return response.data.cast;
 };
-
-
 
 
 export const getMovieReviewsById = async id => {
@@ -65,5 +62,6 @@ export const getMovieReviewsById = async id => {
     `https://api.themoviedb.org/3/movie/${id}/reviews`,
     { params: { api_key: API_KEY } }
   );
+  console.log(response.data.results);
   return response.data.results;
 };
