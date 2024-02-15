@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {Link, Outlet, useParams, useNavigate } from "react-router-dom";
+import {Link, Outlet, useParams, useNavigate, useLocation } from "react-router-dom";
 
 import { getMovieById } from "api/api";
 
@@ -13,6 +13,9 @@ export const MovieDetails = () => {
     const [error, setError] = useState(null);
     
     const { id } = useParams();
+
+    const location = useLocation();
+    const from = location.state?.from || "/";
 
     const navigate=useNavigate();
     
@@ -35,9 +38,8 @@ export const MovieDetails = () => {
         
     }, [id]);
 
-    console.log(movieData);
+    const goBack = () => navigate(from);
 
-    const goBack = () => navigate(-1);
     const defaultImg = '<https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700>'
 
     return (
@@ -86,8 +88,8 @@ export const MovieDetails = () => {
                 <div >
                     <h3>Additional information</h3>
                     <ul className={styles.additionalLink}>
-                    <Link to="cast">Cast</Link>
-                    <Link to="reviews">Reviews</Link>
+                    <Link to="cast" state={{from}}>Cast</Link>
+                    <Link to="reviews" state={{from}}>Reviews</Link>
                     </ul>
                     <Outlet/>
                 </div>

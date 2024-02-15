@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useLocation } from "react-router-dom";
 import Notiflix from 'notiflix';
 
 
 import styles from "./movies-search.module.css";
 
-import { SearchForm } from "components/SearchForm/SearchForm";
+import { SearchForm } from "components/Searchform/Searchform";
 import { Button } from "components/Button/Button";
 import { Loader } from "components/Loader/Loader";
 
@@ -27,6 +27,7 @@ export const MoviesSearch = () => {
     const search = searchParams.get("search");
     const page = searchParams.get("page");
 
+    const location=useLocation();
   
     useEffect (() => {
 //Отримуємо список фільмів, який  приходить в результаті запиту на REST API і додаємо в state 
@@ -84,8 +85,10 @@ const loadMore = () =>setSearchParams({search, page:Number(page)+1});
 
 
 const elements = moviesGallery.map(({ id,original_title }) => (<li key={id} className={styles.item}>
-    <Link to={`/movies/${id}`}>{original_title}</Link> 
+    <Link to={`/movies/${id}`} state={{from:location}} >{original_title}</Link> 
 </li>));
+
+
 
   //для подальшої перевірки записуємо в константу, що масив картинок не порожній , тобто Boolean(moviesGallery.length) буде true. А якщо буде порожній , тоьто false, і далі в return не будемо відмальовувати компоненти
   const isGallery=Boolean(moviesGallery.length)
