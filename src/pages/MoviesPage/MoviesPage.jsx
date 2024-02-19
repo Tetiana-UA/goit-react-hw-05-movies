@@ -3,7 +3,7 @@ import { MoviesSearch } from "components/MoviesSearch/MoviesSearch";
 
 
 
-export const MoviesPage = ()=> {
+const MoviesPage = ()=> {
     return (
         <div className={styles.wrapper}>
                         
@@ -12,3 +12,5 @@ export const MoviesPage = ()=> {
         </div>
     )
 }
+
+export default MoviesPage;

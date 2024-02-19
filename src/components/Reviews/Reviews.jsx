@@ -9,7 +9,7 @@ import { getMovieReviewsById } from "api/api";
 
 
 
-export const Reviews = () => {
+const Reviews = () => {
   
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -47,7 +47,7 @@ export const Reviews = () => {
 
 },[id])
 
-console.log(reviews);
+
 
 
 
@@ -72,4 +72,6 @@ const isReviews=Boolean(reviews.length)
     </div>
     
     )
-  }
+}
+
+export default Reviews;

@@ -1,7 +1,7 @@
 import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { SharedLayout } from "./SharedLayout/SharedLayout";
+import  SharedLayout  from "./SharedLayout/SharedLayout";
 
 const HomePage = lazy(() => import("pages/HomePage/NomePage"));
 const MoviesPage = lazy(() => import("pages/MoviesPage/MoviesPage"));
@@ -11,7 +11,7 @@ const Cast = lazy(() => import("./Cast/Cast"));
 const Reviews = lazy(() => import("./Reviews/Reviews"));
 
 
-export const App = () => {
+const App = () => {
   return (
     <div>
       
@@ -29,3 +29,5 @@ export const App = () => {
     </div>
   );
 };
+
+export default App;

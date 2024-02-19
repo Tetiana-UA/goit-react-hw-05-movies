@@ -2,7 +2,7 @@ import { TrendMoviesList } from "components/TrendMoviesList/TrendMoviesList";
 
 import styles from "./home-page.module.css";
 
-export const HomePage = ()=> {
+const HomePage = ()=> {
     return (
         <div className={styles.homePage}>
             <h1>Trending Today</h1>
@@ -11,3 +11,4 @@ export const HomePage = ()=> {
         </div>
     )
 }
+export default HomePage;

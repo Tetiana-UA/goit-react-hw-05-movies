@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 import { MainMenu } from "components/MainMenu/MainMenu";
 
-export const SharedLayout = () => {
+const SharedLayout = () => {
     return (
         <>
             <MainMenu />
@@ -15,3 +15,4 @@ export const SharedLayout = () => {
         </>
     )
 }
+export default SharedLayout;
