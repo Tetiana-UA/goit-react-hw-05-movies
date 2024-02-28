@@ -7,8 +7,8 @@ import { Loader } from "components/Loader/Loader";
 import { getMovieCastById } from "api/api";
 
 
-export const Cast = () => {
-  
+const Cast = () => {
+
     const [cast, setCast] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -72,4 +72,8 @@ const isCast=Boolean(cast.length)
     </div>
     
     )
-  }
+}
+
+export default Cast;
+
+
